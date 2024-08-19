@@ -1,6 +1,6 @@
 # weather
 
-This template should help get you started developing with Vue 3 in Vite.
+Ce projet à été fait en VueJs 3 en cours d'année dans le but d'apprendre les bases du framework . L'application récupère ainsi des infos météo sur une api et les affiche à l'utilisateur en fonction de sa recherche. Les prévisions météo sont censés s'afficher en tant que résultat mais je rencontre un soucis que j'ai pas pu reésoudre pour l'heure :( .
 
 ## Recommended IDE Setup
 
