@@ -48,6 +48,7 @@ body {
   text-transform: uppercase;
   background-color: blueviolet;
 }
+
 .header {
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
@@ -57,7 +58,9 @@ body {
   text-align: center;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   margin-top: 5em;
+  padding: 1rem !important;
 }
+
 .video-background {
   position: fixed;
   top: 0;
@@ -67,10 +70,37 @@ body {
   object-fit: cover;
   z-index: -1;
 } 
+
 .btn-search {
   background-image: linear-gradient(to right, cyan, magenta);
+  margin-left: 0.5rem;
 }
+
 i {
   margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+  .header {
+    margin-top: 2em;
+  }
+  
+  .searchbar {
+    width: 100% !important;
+    margin: 0 0 1rem 0 !important;
+  }
+  
+  .d-flex {
+    flex-direction: column !important;
+  }
+  
+  .btn-search {
+    width: 100%;
+    margin: 0;
+  }
+  
+  img[width="200"] {
+    width: 150px;
+  }
 }
 </style>

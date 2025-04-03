@@ -113,18 +113,22 @@ async created() {
 
 <style>
 @import url('https://cdn-uicons.flaticon.com/2.0.0/uicons-bold-rounded/css/uicons-bold-rounded.css');
+
 body {
     color:#343d4b;
 }
+
 .weather-temp {
     margin:0;
     font-weight: 700;
     font-size:4em;
 }
+
 h2.mb-1.day {
     font-size: 3em;
     font-weight: 400;
 }
+
 .main-div {
     border-radius: 20px;
     color: aliceblue;
@@ -134,23 +138,33 @@ h2.mb-1.day {
     background-blend-mode: overlay;
     background-color: rgba(0, 0, 0, 0.5);
     background-repeat: no-repeat;
+    min-height: 400px;
+    position: relative;
 }
+
 .temp {
     position: absolute;
     bottom: 0;
+    width: 100%;
+    padding: 1rem;
 }
+
 .main-div:hover {
     transform: scale(1.1);
     transition: transform 0.5s ease;
     z-index: 1;
 }
+
 .card-2{
     background-color: #212730;
     border-radius: 20px;
+    padding: 1rem;
 }
+
 .card-details {
     margin-left: 19px;
 }
+
 .h1_left {
     position: absolute;
     bottom: 25px;
@@ -158,15 +172,18 @@ h2.mb-1.day {
     font-size: 3vw;
     line-height: 1.2;
 }
+
 .h3_left {
     position: absolute;
     left: 16px;
     font-size:2vw;
     line-height: 0.5;
 }
+
 .h3_left small {
     font-size: 1rem;
 }
+
 table {
     position: relative;
     left: 15px;
@@ -177,13 +194,16 @@ table {
     max-width: 600px;
     margin:0 auto;
 }
+
 th,td {
     font-size: 18px;
     color: #fff;
 }
+
 td {
     text-align: right;
 }
+
 table,
 tr:hover {
     color:red;
@@ -191,11 +211,44 @@ tr:hover {
 
 .change-btn {
     background-image: linear-gradient(to right, cyan, magenta);
+    width: 100%;
+    max-width: 200px;
 }
+
 .change-btn:hover {
-transform: scale(0.9);
-transition: transform 0.1s ease;
+    transform: scale(0.9);
+    transition: transform 0.1s ease;
 }
 
-
+@media (max-width: 768px) {
+    .d-flex {
+        flex-direction: column !important;
+    }
+    
+    .card {
+        width: 100% !important;
+        margin-bottom: 1rem;
+    }
+    
+    .weather-temp {
+        font-size: 3em;
+    }
+    
+    h2.mb-1.day {
+        font-size: 2em;
+    }
+    
+    table {
+        width: 100%;
+        left: 0;
+    }
+    
+    th, td {
+        font-size: 16px;
+    }
+    
+    .place {
+        font-size: 1.5em;
+    }
+}
 </style>

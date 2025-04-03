@@ -86,10 +86,19 @@ methods: {
 <style>
 .loading {
     color:#fff;
+    text-align: center;
+    padding: 2rem;
 }
+
 ul {
     margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
 }
+
 li {
     display: inline-block;
     list-style: none;
@@ -99,30 +108,63 @@ li {
     font-size: 1vw;
     line-height: 1.2;
 }
+
 span {
     display: block;
     margin-bottom: 5px;
     font: 100% sans-serif;
     height: 35px;
 }
+
 .li_active {
     background: #253d5c;
     color: #222831;
     border-radius: 10px;
-    margin: 0.5rem ;
+    margin: 0.5rem;
     color: #fff;
     font-weight: 600;
+    padding: 0.5rem;
+    text-align: center;
 }
+
 .li_active:hover {
-transform: scale(1.2);
-transition: transform 0.1s ease;
+    transform: scale(1.2);
+    transition: transform 0.1s ease;
 }
+
 .li_active_temp {
     display: inline-block;
     background-color: #222831;
     color: #ffffff;
     transition: background-color 0.5s;
     border-radius:10px;
+}
 
+@media (max-width: 768px) {
+    li {
+        width: 45%;
+        max-width: 45%;
+        font-size: 14px;
+    }
+    
+    .li_active {
+        margin: 0.25rem;
+    }
+    
+    .py-3 {
+        padding: 0.5rem !important;
+    }
+    
+    img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    li {
+        width: 100%;
+        max-width: 100%;
+    }
 }
 </style>
