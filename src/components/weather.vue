@@ -100,10 +100,10 @@ async created() {
                 
             </tbody>
         </table>
-        <DaysWeather :cityName="cityName"></DaysWeather>
+        <DaysWeather :cityName="city"></DaysWeather>
         <div id="div_Form" class="d-flex m-3 justify-content-center">
             <form action="">
-                <input type="button" value="Change Location" class="btn change-btn btn-primary">
+                <input type="button" value="Change Location" class="btn change-btn btn-primary" @click="$emit('change-location')">
             </form>
         </div>
     </div>
@@ -117,7 +117,9 @@ async created() {
 body {
     color:#343d4b;
 }
-
+.container {
+    z-index: 1;
+}
 .weather-temp {
     margin:0;
     font-weight: 700;
@@ -150,8 +152,7 @@ h2.mb-1.day {
 }
 
 .main-div:hover {
-    transform: scale(1.1);
-    transition: transform 0.5s ease;
+    
     z-index: 1;
 }
 

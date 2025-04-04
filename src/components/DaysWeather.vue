@@ -14,40 +14,47 @@ data() {
         iconUrl: null,
     };
 },
- mounted(){
-   this.fetchWeatherData();
+watch: {
+    cityName: {
+        immediate: true,
+        handler(newValue) {
+            if (newValue) {
+                this.fetchWeatherData();
+            }
+        }
+    }
+},
+mounted(){
+    if (this.cityName) {
+        this.fetchWeatherData();
+    }
 },
 methods: {
     async fetchWeatherData(){
-        // const apiKey = '65bc175c5da73f7fb225524b81744f56';
-        const city = this.cityName; 
-        const apiUrl =`https://pro.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=65bc175c5da73f7fb225524b81744f56`;
-
-        await axios.get(apiUrl).then(Response => {
-            const forecastData = Response.data.list;
+        this.loading = true;
+        try {
+            const response = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${this.cityName}&units=metric&appid=65bc175c5da73f7fb225524b81744f56`);
+            const forecastData = response.data.list;
             const filteredData = forecastData.map(item => {
                 return {
-                    date: moment(item.dt_txt.split('')[0]),
+                    date: moment(item.dt_txt.split(' ')[0]).format('dddd, MMMM D'),
                     temperature: Math.round(item.main.temp),
                     description: item.weather[0].description,
                     iconUrl: `https://api.openweathermap.org/img/w/${item.weather[0].icon}.png`,
                 };
             }).reduce((acc, item) => {
-                if(!acc.some(day => day.date.isSame(item.date,'day'))) {
+                if(!acc.some(day => day.date === item.date)) {
                     acc.push(item);
                 }
                 return acc;
             }, []).slice(1, 5);
 
-            console.log(filteredData,"working");
             this.forecast = filteredData;
-            this.loading = false;
-        }).catch (error => {
+        } catch (error) {
             console.error('Error fetching weather data:', error);
+        } finally {
             this.loading = false;
-        });
-
-    
+        }
     }
 }
 
