@@ -13,7 +13,8 @@ data (){
     showWeather: false,
     searchQuery: '',
     suggestions: [],
-    showSuggestions: false
+    showSuggestions: false,
+    searchInput: null
   }
 },
 methods:{
@@ -45,7 +46,9 @@ methods:{
   },
   focusSearch() {
     this.searchQuery = '';
-    this.$refs.searchInput.focus();
+    if (this.searchInput) {
+      this.searchInput.focus();
+    }
   }
 }
 })
@@ -54,16 +57,26 @@ methods:{
 
 <template>
   <div class="app">
-    <video class="video-background" autoplay loop muted>
+    <video 
+      class="video-background" 
+      autoplay 
+      loop 
+      muted 
+      playsinline
+      webkit-playsinline
+      x5-playsinline
+      x-webkit-airplay="allow"
+      preload="auto"
+    >
       <source src="../src/assets/Neutral Color Minimal Animated Search Bar Reminder Quotes Video.mp4" type="video/mp4">
-      Votre navigateur ne prend pas en charge notre contenu  vidéo.
+      Votre navigateur ne prend pas en charge notre contenu vidéo.
     </video>
     <div class="header container h-100 p-5">
     <h1 class="mb-5"><img src="../src/assets/morecast-logo.svg" width="200" alt=""></h1>
     <div class="d-flex justify-content-center h-100">
       <div class="searchbar w-50 mx-2 position-relative">
           <input 
-            ref="searchInput"
+            :ref="el => searchInput = el"
             type="text" 
             class="input form-control" 
             v-model="searchQuery" 
